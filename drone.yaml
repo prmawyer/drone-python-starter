@@ -23,9 +23,9 @@ steps:
     service: "${DRONE_REPO_NAME}"
     build: "${DRONE_TAG}"
     accountid:
-      from_secret: harness_acctid
+      from_secret: harness_se_acctid
     apikey: 
-      from_secret: harness_secret
+      from_secret: harness_se_apikey
     body: |
       any other payload here
 
