@@ -18,8 +18,8 @@ steps:
 - name: harness-deploy
   image: luisredda/drone-simple-plugin
   settings:  
-    application: "ECommerce"
-    pipeline: "Deploy to K8s"
+    application: "Patrick-Workspace"
+    pipeline: "pm-drone-test-pipeline"
     service: "${DRONE_REPO_NAME}"
     build: "${DRONE_TAG}"
     accountid:
