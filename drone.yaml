@@ -2,6 +2,12 @@ kind: pipeline
 name: primary
 
 steps:
+- name: test_commands
+  image: alpine
+  commands:
+   - echo $TESTVAL
+  environment:
+    TESTVAL: thisisatestvariable
 - name: build
   image: python
   commands:
