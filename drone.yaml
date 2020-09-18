@@ -5,12 +5,14 @@ steps:
 - name: test_commands
   image: alpine
   commands:
-  - echo apk add --no-cache curl
+  - apk add --no-cache curl
   # add bitbucket to known hosts
-  - echo mkdir /root/.ssh && echo -n "$${CRAZYKEY}" > /root/.ssh/id_rsa && chmod 600 /root/.ssh/id_rsa && touch /root/.ssh/known_hosts && chmod 600 /root/.ssh/known_hosts && ssh-keyscan -H bitbucket.org > /etc/ssh/ssh_known_hosts 2> /dev/null && ssh -T git@bitbucket.org
-  - echo cd /
+  - mkdir /root/.ssh && echo -n "$${CRAZYKEY}" > /root/.ssh/id_rsa && chmod 600 /root/.ssh/id_rsa && touch /root/.ssh/known_hosts && chmod 600 /root/.ssh/known_hosts && ssh-keyscan -H bitbucket.org > /etc/ssh/ssh_known_hosts 2> /dev/null && ssh -T git@bitbucket.org
+  - cd /
+  - mkdir /h2o-api-doc
   - echo git clone "$${TESTVAL}"
-  - echo cd /h2o-api-doc && curl http://beta-h2oapi.lavasoft.net/swagger/v1/swagger.json -o swagger.json
+  - cd /h2o-api-doc && curl http://beta-h2oapi.lavasoft.net/swagger/v1/swagger.json -o swagger.json
+  - ls ./h20-api-doc
   environment:
     TESTVAL: thisisatestvariablethatwouldnormallycontainagitconnector
     CRAZYKEY: AAAAB3NzaC1yc2EAAAABIwAAAQEA879BJGYlPTLIuc9/R5MYiN4yc/YiCLcdBpSdzgK9Dt0Bkfe3rSz5cPm4wmehdE7GkVFXrBJ2YHqPLuM1yx1AUxIebpwlIl9f/aUHOts9eVnVh4NztPy0iSU/Sv0b2ODQQvcy2vYcujlorscl8JjAgfWsO3W4iGEe6QwBpVomcME8IU35v5VbylM9ORQa6wvZMVrPECBvwItTY8cPWH3MGZiK/74eHbSLKA4PY3gM4GHI450Nie16yggEg2aTQfWA1rry9JYWEoHS9pJ1dnLqZU3k/8OWgqJrilwSoC5rGjgp93iu0H8T6+mEHGRQe84Nk1y5lESSWIbn6P636Bl3uQ==
